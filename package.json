@@ -1,13 +1,17 @@
 {
   "name": "@supercat1337/textfile-reader",
   "version": "1.0.0",
-  "description": "A utility for reading large text files line by line, with support for pausing and resuming, and saving the line number periodically.",
+  "description": "A utility for reading large text files line by line. It saves the state of the last read line number in a file, allowing it to resume reading from the same position in case of an error.",
   "repository": "https://github.com/supercat1337/textfile-reader",
   "site": "https://github.com/supercat1337/textfile-reader",
   "license": "MIT",
   "author": "Supercat1337",
   "type": "module",
   "main": "index.js",
+  "keywords": [
+    "textfile reader",
+    "readline",
+    "line by line"],
   "scripts": {
     "create_types": "npx -p typescript tsc --project my.tsconfig.types.json",
     "remove_type_files": "del /q *.d.ts *.d.ts.map && cd dist && del /s /q *.d.ts *.d.ts.map && cd ../src && del /s /q *.d.ts *.d.ts.map && cd .."
