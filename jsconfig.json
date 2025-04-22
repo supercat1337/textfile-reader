@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "src/*": ["./src/*"],
+      },
+      "moduleResolution": "NodeNext",
+      "target": "ESNext",
+      "module": "NodeNext",
+      "noEmit": true,
+      "lib": [
+          "DOM",
+          "ES2020"
+        ],
+    },
+    //Add any build/compiled folders here to stop vscode searching those
+    "exclude": ["node_modules", "**/node_modules"]
+  }
