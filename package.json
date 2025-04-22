@@ -11,8 +11,6 @@
     "remove_type_files": "del /q *.d.ts *.d.ts.map && cd dist && del /s /q *.d.ts *.d.ts.map && cd ../src && del /s /q *.d.ts *.d.ts.map && cd .."
   },
   "dependencies": {
-    "@supercat1337/event-emitter": "^1.0.10",
-    "dom-scope": "^1.0.19",
     "event-stream": "^4.0.1"
   },
   "devDependencies": {
