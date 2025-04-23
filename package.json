@@ -1,6 +1,6 @@
 {
   "name": "@supercat1337/textfile-reader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A utility for reading large text files line by line. It saves the state of the last read line number in a file, allowing it to resume reading from the same position in case of an error.",
   "repository": "https://github.com/supercat1337/textfile-reader",
   "site": "https://github.com/supercat1337/textfile-reader",
