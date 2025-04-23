@@ -11,8 +11,10 @@
   "keywords": [
     "textfile reader",
     "readline",
-    "line by line"],
+    "line by line"
+  ],
   "scripts": {
+    "test": "c8 ava",
     "create_types": "npx -p typescript tsc --project my.tsconfig.types.json",
     "remove_type_files": "del /q *.d.ts *.d.ts.map && cd dist && del /s /q *.d.ts *.d.ts.map && cd ../src && del /s /q *.d.ts *.d.ts.map && cd .."
   },
@@ -20,6 +22,8 @@
     "event-stream": "^4.0.1"
   },
   "devDependencies": {
-    "@types/node": "^22.14.1"
+    "@types/node": "^22.14.1",
+    "ava": "^6.2.0",
+    "c8": "^10.1.3"
   }
 }

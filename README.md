@@ -30,9 +30,6 @@ await textFileReader.read((line, lineNumber) => {
 -   `read(callback)`: Reads the file line by line from the saved line number, executes the provided callback function for each line, and saves the line number periodically. Returns a promise that resolves to true when the file reading is completed successfully. The callback may be asynchronous or synchronous.
 -   `resetSettings()`: Resets the line number to 0 and saves the settings. Throws an error if no file is opened.
 -   `stop()`: Stops the reading process and ends the current file stream.
-
-**Properties**
-
--   `path`: Returns the path of the currently opened file. Throws an error if no file is opened.
+-   `getPath()`: Returns the path of the currently opened file. Throws an error if no file is opened.
 
 **Note**: The `TextFileReader` class uses the Node.js `fs` module to read files, so it requires Node.js to be installed.

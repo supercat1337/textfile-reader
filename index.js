@@ -56,12 +56,12 @@ export class TextFileReader {
     }
 
     /**
-     * The path to the currently opened file.
+     * Returns the path of the currently opened file.
      *
-     * @type {string}
-     * @readonly
+     * @returns {string} - The path to the currently opened file.
+     * @throws Will throw an error if no file is opened.
      */
-    get path() {
+    getPath() {
         if (!this.#isOpened) {
             throw new Error("File not opened");
         }
@@ -81,6 +81,11 @@ export class TextFileReader {
         if (!this.#isOpened) {
             throw new Error("File not opened");
         }
+
+        if (this.#isReading) {
+            throw new Error("Cannot count lines while reading");
+        }
+
         this.#settings = this.#loadSettings();
 
         var lineNumber = 0;
@@ -188,5 +193,45 @@ export class TextFileReader {
     stop() {
         if (!this.#isReading) return;
         this.#stream.end();
+    }
+
+    countLines() {
+        if (!this.#isOpened) {
+            throw new Error("File not opened");
+        }
+
+        if (this.#isReading) {
+            throw new Error("Cannot count lines while reading");
+        }
+
+        this.#isReading = true;
+
+        var file_name = this.#path;
+        var that = this;
+
+        return new Promise((resolve, reject) => {
+            var lineNr = 0;
+
+            var stream = fs
+                .createReadStream(file_name)
+                // @ts-ignore
+                .pipe(es.split())
+                // @ts-ignore
+                .pipe(
+                    es
+                        .mapSync(function () {
+                            lineNr += 1;
+                        })
+                        .on("error", function (err) {
+                            that.#isReading = false;
+                            console.log("Error while reading file.", err);
+                            reject("Error while reading file.");
+                        })
+                        .on("end", function () {
+                            that.#isReading = false;
+                            resolve(lineNr);
+                        })
+                );
+        });
     }
 }

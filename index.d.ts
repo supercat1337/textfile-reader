@@ -1,4 +1,9 @@
 export class TextFileReader {
+    /**
+     * Constructor for TextFileReader.
+     *
+     * @param {number} [saveSettingsEveryLine=10] - The number of lines to read before saving the current line number to a settings file.
+     */
     constructor(saveSettingsEveryLine?: number);
     /**
      * Opens a file and sets the internal path if the file exists.
@@ -8,12 +13,12 @@ export class TextFileReader {
      */
     openFile(path: string): void;
     /**
-     * The path to the currently opened file.
+     * Returns the path of the currently opened file.
      *
-     * @type {string}
-     * @readonly
+     * @returns {string} - The path to the currently opened file.
+     * @throws Will throw an error if no file is opened.
      */
-    readonly get path(): string;
+    getPath(): string;
     /**
      * Reads the file line by line starting from a specified line number and executes a callback function for each line.
      * The reading process can be paused and resumed, and settings are saved periodically.
@@ -36,6 +41,7 @@ export class TextFileReader {
      * If the file is not currently being read, the function returns immediately.
      */
     stop(): void;
+    countLines(): Promise<any>;
     #private;
 }
 //# sourceMappingURL=index.d.ts.map
